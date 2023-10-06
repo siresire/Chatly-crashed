@@ -9,9 +9,16 @@ import { Nav_Buttons } from "../../data";
 import useSettings from "../../hooks/useSettings";
 import AntSwitch from "../../components/AntSwitch";
 import { Profile_Menu } from "../../data"
+import { useNavigate } from "react-router-dom";
+
+
+const getPath = (index) => {
+
+};
 
 const Sidebar = () =>{
     const theme = useTheme();
+    const navigate = useNavigate();
     const [selected, setSelected] = useState(0);
     const { onToggleMode } = useSettings();
 
@@ -19,6 +26,7 @@ const Sidebar = () =>{
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        
     };
     const handleClose = () => { setAnchorEl(null); };
     return (
@@ -54,6 +62,7 @@ const Sidebar = () =>{
                   <IconButton
                     onClick={() => {
                       setSelected(el.index);
+                      
                     }}
                     sx={{
                       width: "max-content",
@@ -76,6 +85,7 @@ const Sidebar = () =>{
                 <IconButton
                   onClick={() => {
                     setSelected(3);
+                    
                   }}
                   sx={{
                     width: "max-content",

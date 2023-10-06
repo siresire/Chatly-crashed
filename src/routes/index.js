@@ -42,6 +42,7 @@ export default function Router() {
         
         
         { path: "profile", element: <ProfilePage /> },
+        { path: "call", element: <CallPage /> },
 
         { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" replace /> },
