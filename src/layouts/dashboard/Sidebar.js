@@ -13,6 +13,18 @@ import { useNavigate } from "react-router-dom";
 
 
 const getPath = (index) => {
+  switch (index) {
+    case 0:
+      return "/app";
+    case 1:
+      return "/group";
+    case 2:
+      return "/call";
+    case 3:
+      return "/settings";
+    default:
+      return "/404";
+  }
 
 };
 
@@ -26,6 +38,7 @@ const Sidebar = () =>{
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        
         
     };
     const handleClose = () => { setAnchorEl(null); };
@@ -62,6 +75,7 @@ const Sidebar = () =>{
                   <IconButton
                     onClick={() => {
                       setSelected(el.index);
+                      navigate(getPath(el.index));
                       
                     }}
                     sx={{
@@ -84,6 +98,7 @@ const Sidebar = () =>{
               ) : (
                 <IconButton
                   onClick={() => {
+                    navigate(getPath(3));
                     setSelected(3);
                     
                   }}
