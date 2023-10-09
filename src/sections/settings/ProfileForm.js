@@ -99,19 +99,19 @@ const ProfileForm = () => {
 
                 <RHFTextField multiline rows={4} name="about" label="About" />
                 <Stack direction={"row"} justifyContent="end">
-          <Button
-            color="primary"
-            size="large"
-            type="submit"
-            variant="contained"
-            // loading={isSubmitSuccessful || isSubmitting}
-          >
-            Save
-          </Button>
-        </Stack>
-      </Stack>
-    </FormProvider>
-  );
+                    <Button
+                        color="primary"
+                        size="large"
+                        type="submit"
+                        variant="contained"
+                    // loading={isSubmitSuccessful || isSubmitting}
+                    >
+                        Save
+                    </Button>
+                </Stack>
+            </Stack>
+        </FormProvider>
+    );
 };
 
 export default ProfileForm;
