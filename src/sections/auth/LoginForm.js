@@ -10,7 +10,7 @@ import { Link, Stack, Alert, IconButton, InputAdornment, Button } from "@mui/mat
 // components
 import FormProvider, { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
-// import { LoginUser } from "../../redux/slices/auth";
+import { LoginUser } from "../../redux/slices/auth";
 import { useDispatch, useSelector } from "react-redux";
 
 // ----------------------------------------------------------------------
@@ -29,7 +29,7 @@ export default function AuthLoginForm() {
   });
 
   const defaultValues = {
-    email: "example@gmail.com",
+    email: "siresire@gmail.com",
     password: "1234",
   };
 
@@ -49,7 +49,7 @@ export default function AuthLoginForm() {
     try {
       console.log(data);
       // submit data to backend
-    //   dispatch(LoginUser(data));
+      dispatch(LoginUser(data));
     } catch (error) {
       console.error(error);
       reset();
