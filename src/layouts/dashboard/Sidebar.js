@@ -53,7 +53,6 @@ const getMenuPath = (index) => {
 
 };
 
-
 const Sidebar = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
