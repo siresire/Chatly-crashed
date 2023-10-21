@@ -11,6 +11,7 @@ import AntSwitch from "../../components/AntSwitch";
 import { Profile_Menu } from "../../data"
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { LogoutUser } from "../../redux/slices/app";
 // import { UpdateTab } from "../../redux/slices/app";
 // import ProfileMenu from "./ProfileMenu";
 
@@ -178,13 +179,23 @@ const Sidebar = () => {
                 <MenuItem
                   onClick={() => {
                     handleClick();
+                    // if the index is 2 then dispatch logout
+                    // if (idx === 2) {
+                    //   dispatch(LogoutUser());
+                    // }
+
                   }} >
                   <Stack
 
                     onClick={() => {
-                      navigate(getMenuPath(idx))
-                    }}
+                      if (idx === 2) {
+                        dispatch(LogoutUser());
+                      }
+                      else {
+                        navigate(getMenuPath(idx))
+                      }
 
+                    }}
 
                     sx={{ width: 100 }} direction={"row"} alignItems={"center"} justifyContent="space-between">
                     <span>{el.title}</span>

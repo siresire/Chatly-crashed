@@ -23,6 +23,9 @@ const slice = createSlice({
             updateSidebarType(state,action){
                 state.sidebar.type = action.payload.type;
         },
+        signOut(state,action){
+            state.sidebar.open = state.sidebar.open || false;
+        },
     },
 
 });
@@ -47,3 +50,23 @@ export function updateSidebarType(type){
    
 }
 
+export function LogoutUser(){
+    return async (dispatch, getState) => {
+        dispatch(slice.actions.signOut());
+    }
+}
+
+export const showSnackbar =
+  ({ severity, message }) =>
+  async (dispatch, getState) => {
+    dispatch(
+      slice.actions.openSnackBar({
+        message,
+        severity,
+      })
+    );
+
+    setTimeout(() => {
+      dispatch(slice.actions.closeSnackBar());
+    }, 4000);
+  };
