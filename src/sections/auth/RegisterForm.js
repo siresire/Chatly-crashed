@@ -10,7 +10,7 @@ import { Link, Stack, Alert, IconButton, InputAdornment,Button } from "@mui/mate
 import FormProvider, { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
 import { useDispatch, useSelector } from "react-redux";
-// import { RegisterUser } from "../../redux/slices/auth";
+import { RegisterUser } from "../../redux/slices/auth";
 
 // ----------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ export default function AuthRegisterForm() {
   const onSubmit = async (data) => {
     try {
       // submit data to backend
-    //   dispatch(RegisterUser(data));
+      dispatch(RegisterUser(data));
     } catch (error) {
       console.error(error);
       reset();
