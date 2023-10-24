@@ -31,7 +31,7 @@ export default function AuthRegisterForm() {
   const defaultValues = {
     firstName: "",
     lastName: "",
-    email: "demo@tawk.com",
+    email: "siresire@gmail.com",
     password: "demo1234",
   };
 
