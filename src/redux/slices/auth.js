@@ -233,7 +233,8 @@ export function VerifyEmail(formValues) {
       )
       .then(function (response) {
         console.log(response);
-        dispatch(slice.actions.updateRegisterEmail({ email: "" }));
+        dispatch(
+          slice.actions.updateRegisterEmail({ email: "" }));
         window.localStorage.setItem("user_id", response.data.user_id);
         dispatch(
           slice.actions.logIn({

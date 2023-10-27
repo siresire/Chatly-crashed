@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Stack, Typography, IconButton, Tab, Tabs, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { ToggleSidebar, updateSidebarType } from "../redux/slices/app";
+import { ToggleSidebar, UpdateSidebarType } from "../redux/slices/app";
 import { CaretLeft, CaretRight, X } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import { SHARED_DOCS, SHARED_LINKS } from '../data';
@@ -37,7 +37,7 @@ const SharedMessages = () => {
                         spacing={3}
                     >
                         <IconButton onClick={() => {
-                            dispatch(updateSidebarType("CONTACT"))
+                            dispatch(UpdateSidebarType("CONTACT"))
 
                         }}>
                             <CaretLeft />

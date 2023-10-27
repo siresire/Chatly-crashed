@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import { Bell, CaretRight, Phone, Prohibit, Star, Trash, VideoCamera, X } from "phosphor-react";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ToggleSidebar, updateSidebarType } from "../redux/slices/app";
+import { ToggleSidebar, UpdateSidebarType } from "../redux/slices/app";
 import { faker } from "@faker-js/faker";
 import AntSwitch from "./AntSwitch";
 import { TransitionProps } from '@mui/material/transitions';
@@ -146,7 +146,7 @@ const Contact = () => {
                     <Stack direction={'row'} alignItems={'center'} justifyContent={"space-between"}>
                         <Typography variant="subtitle2">  Media,Link & Docs </Typography>
                         <Button onClick={() => {
-                            dispatch(updateSidebarType("SHARED"));
+                            dispatch(UpdateSidebarType("SHARED"));
                         }}
                             endIcon={<CaretRight />}>
                             402
@@ -168,7 +168,7 @@ const Contact = () => {
                             </Typography>
                         </Stack>
                         <IconButton onClick={() => {
-                            dispatch(updateSidebarType("STARRED"));
+                            dispatch(UpdateSidebarType("STARRED"));
                         }}>
                             <CaretRight />
                         </IconButton>

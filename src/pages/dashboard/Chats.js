@@ -1,16 +1,25 @@
-import { Box, IconButton, Stack, Typography, InputBase, Divider, Avatar, Badge } from "@mui/material";
-import { ArchiveBox, CircleDashed, MagnifyingGlass } from "phosphor-react";
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  Stack,
+  Badge,
+  Typography,
+} from "@mui/material";
+import { ArchiveBox, CircleDashed, MagnifyingGlass, User, Users } from "phosphor-react";
 import { styled, alpha, useTheme } from "@mui/material/styles";
 import { faker } from '@faker-js/faker';
-import React from "react";
 import { ChatList } from "../../data";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import {
     Search,
     SearchIconWrapper,
     StyledInputBase,
-  } from "../../components/Search";
+} from "../../components/Search";
 import ChatElement from "../../components/ChatElement";
+import Friends from "../../sections/main/Friends";
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -118,26 +127,50 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Chats = () => {
 
+    const [openDialog, setOpenDialog] = useState(false);
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+    const handleOpenDialog = () => {
+        setOpenDialog(true);
+    };
+
+
     const theme = useTheme();
     return (
+        <>
         <Box
-        sx={{
-            position: "relative",
-            // height: "100%",
-            width: 320,
-            backgroundColor: theme.palette.mode === "light" ? "#f8FAFF" : theme.palette.background.appearance, 
-            boxShadow: "0px 0px 2px rgba(0,0,0,.25)",
-        }}
-        
+            sx={{
+                position: "relative",
+                // height: "100%",
+                width: 320,
+                backgroundColor: theme.palette.mode === "light" ? "#f8FAFF" : theme.palette.background.appearance,
+                boxShadow: "0px 0px 2px rgba(0,0,0,.25)",
+            }}
+
         >
-            <Stack p={4} spacing={2} sx = {{height: "100vh"}}>
-                <Stack 
-                direction='row' 
-                alignItems="center" 
-                justifyContent="space-between">
+            <Stack p={4} spacing={2} sx={{ height: "100vh" }}>
+                <Stack
+                    direction='row'
+                    alignItems="center"
+                    justifyContent="space-between">
                     <Typography variant="h4">
                         Chats
                     </Typography>
+
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                        <IconButton onClick={() => {
+                            handleOpenDialog();
+                        }}>
+                            <Users />
+                        </IconButton>
+
+                    </Stack>
+
+
+
+
                     <IconButton>
                         <CircleDashed />
                     </IconButton>
@@ -145,13 +178,13 @@ const Chats = () => {
 
                 {/* search bar */}
                 <Search>
-                <Stack sx={{ width: "100%" }} direction="row" alignItems="center">
-                <MagnifyingGlass color="#709CE6" />
-                    <SearchIconWrapper>
-                        
-                    </SearchIconWrapper>
-                    <StyledInputBase placeholder="search ...." inputProps={{ "aria-label": "search" }} />
-                </Stack>
+                    <Stack sx={{ width: "100%" }} direction="row" alignItems="center">
+                        <MagnifyingGlass color="#709CE6" />
+                        <SearchIconWrapper>
+
+                        </SearchIconWrapper>
+                        <StyledInputBase placeholder="search ...." inputProps={{ "aria-label": "search" }} />
+                    </Stack>
                 </Search>
 
                 {/* Archived box */}
@@ -160,32 +193,36 @@ const Chats = () => {
                         <ArchiveBox size={24} />
                         <button> Archived </button>
                     </Stack>
-                    <Divider/>
+                    <Divider />
                 </Stack>
                 <Stack spacing={2.4} direction="column" sx={{ flexGrow: 1, overflow: 'auto', height: "100%" }}>
 
                     <SimpleBarStyle timeout={500} clickOnTrack={false}>
-                    <Stack spacing={2.4}>
-                        <Typography variant="subtitle2" sx={{ color: "#676767" }}>
-                            Pinned chats
-                        </Typography>
-                        {ChatList.filter((el) => el.pinned).map((el) => {
-                            return <ChatElement key={el.id} {...el} />
-                        })}
-                    </Stack>
+                        <Stack spacing={2.4}>
+                            <Typography variant="subtitle2" sx={{ color: "#676767" }}>
+                                Pinned chats
+                            </Typography>
+                            {ChatList.filter((el) => el.pinned).map((el) => {
+                                return <ChatElement key={el.id} {...el} />
+                            })}
+                        </Stack>
 
-                    <Stack spacing={2.4}>
-                        <Typography variant="subtitle2" sx={{ color: "#676767" }}>
-                            All chats
-                        </Typography>
-                        {ChatList.filter((el) => !el.pinned).map((el) => {
-                            return <ChatElement key={el.id} {...el} />
-                        })}
-                    </Stack>
+                        <Stack spacing={2.4}>
+                            <Typography variant="subtitle2" sx={{ color: "#676767" }}>
+                                All chats
+                            </Typography>
+                            {ChatList.filter((el) => !el.pinned).map((el) => {
+                                return <ChatElement key={el.id} {...el} />
+                            })}
+                        </Stack>
                     </SimpleBarStyle>
                 </Stack>
             </Stack>
         </Box>
+        {openDialog && (
+            <Friends open={openDialog} handleClose={handleCloseDialog} />
+        )}
+        </>
     );
 };
 

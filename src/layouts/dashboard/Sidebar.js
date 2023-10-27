@@ -11,7 +11,8 @@ import AntSwitch from "../../components/AntSwitch";
 import { Profile_Menu } from "../../data"
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LogoutUser } from "../../redux/slices/app";
+import {  } from "../../redux/slices/app";
+import { LogoutUser } from "../../redux/slices/auth";
 // import { UpdateTab } from "../../redux/slices/app";
 // import ProfileMenu from "./ProfileMenu";
 
