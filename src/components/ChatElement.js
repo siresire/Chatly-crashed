@@ -8,9 +8,14 @@ import StyledBadge from "./StyledBadge";
 
 const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
     const theme = useTheme();
+    const dispatch = useDispatch();
 
     return (
-        <Box sx={{
+        <Box 
+        onClick={() => {
+            dispatch(SelectConversation({room_id: id}));
+        }}
+        sx={{
             width: "100%",
             borderRadius: 1,
             backgroundColor: theme.palette.mode === "light" ? "#fff" : theme.palette.background.appearance,
