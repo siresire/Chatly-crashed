@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { connectSocket, socket } from "../../sockets";
+import { connectSocket, socket } from "../../socket";
 import { showSnackbar } from "../../redux/slices/app";
 
 // const isAuthenticated = false;
