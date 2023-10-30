@@ -191,7 +191,7 @@ const FriendElement = ({
       p={2}
     >
       <Stack
-        direction="row"
+       direction="row"
         alignItems={"center"}
         justifyContent="space-between"
       >

@@ -8,14 +8,21 @@ import StyledBadge from "./StyledBadge";
 
 const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
     const theme = useTheme();
+    const dispatch = useDispatch();
 
     return (
-        <Box sx={{
+        <Box
+        onClick={() => {
+            dispatch(SelectConversation({ chat_type: "individual", room_id: id }));
+        }}
+         sx={{
             width: "100%",
             borderRadius: 1,
-            backgroundColor: theme.palette.mode === "light" ? "#fff" : theme.palette.background.appearance,
+            backgroundColor: theme.palette.mode === "light"
+                ? "#fff"
+                : theme.palette.background.appearance,
         }}
-        p={2}
+            p={2}
         >
             <Stack
                 direction="row"
@@ -24,7 +31,7 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
             >
                 <Stack direction="row" spacing={2}>
 
-                {online ? (
+                    {online ? (
                         <StyledBadge
                             overlap="circular"
                             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -50,7 +57,7 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
                     </Badge>
                 </Stack>
             </Stack>
-        </Box> 
+        </Box>
     );
 };
 

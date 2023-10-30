@@ -243,7 +243,6 @@ export function VerifyEmail(formValues) {
           })
         );
 
-
         dispatch(
           showSnackbar({ severity: "success", message: response.data.message })
         );

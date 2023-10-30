@@ -23,12 +23,15 @@ const UsersList = () => {
 
   return (
     <>
-      {users.map((el, idx) => {
-        return <UserElement key={idx} {...el} />;
-      })}
+      {users ? (
+        users.map((el, idx) => {
+          return <UserElement key={el._id} {...el} />;
+        })
+      ) : null}
     </>
   );
 };
+
 
 const FriendsList = () => {
   const dispatch = useDispatch();
@@ -41,12 +44,16 @@ const FriendsList = () => {
 
   return (
     <>
-      {friends.map((el, idx) => {
-        return <FriendElement key={idx} {...el} />;
-      })}
+      {friends ? (
+        friends.map((el, idx) => {
+          // el => {id, sender: {firstName, lastName, online, img,online}
+          return <FriendElement key={el._id} {...el} />;
+        })
+      ) : null}
     </>
   );
 };
+
 
 const RequestsList = () => {
   const dispatch = useDispatch();
@@ -59,12 +66,16 @@ const RequestsList = () => {
 
   return (
     <>
-      {friendRequests.map((el, idx) => {
-        return <FriendRequestElement key={idx} {...el.sender} id={el._id} />;
-      })}
+      {friendRequests ? (
+        friendRequests.map((el, idx) => {
+          // el => {id, sender: {firstName, lastName, online, img,online}
+          return <FriendRequestElement key={el._id} {...el.sender} id={el._id} />;
+        })
+      ) : null}
     </>
   );
 };
+
 
 const Friends = ({ open, handleClose }) => {
   const [value, setValue] = React.useState(0);

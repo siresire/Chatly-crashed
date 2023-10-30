@@ -30,20 +30,19 @@ const initialState = {
                         name: `${this_user?.firstName} ${this_user?.lastName}`,
                         online: this_user?.status === "Online",
                         img : faker.image.avatar(),
-                        msg : faker.lorem.sentence(),
+                        msg : faker.music.songName(),
                         time: "9:36",
                         unread: 0,
                         pinned: false,
                     };
             });
 
-            state.direct_chat.conversations = [];
+            state.direct_chat.conversations = list;
            
-            }
-        }
+            },
+        },
 
-    }
-);
+    });
 
 export default slice.reducer;
 
